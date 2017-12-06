@@ -30,7 +30,10 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.recordsTab = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            RecordsGridView = new System.Windows.Forms.DataGridView();
             this.ItemNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +54,12 @@
             this.fileLocation = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.billingName = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.billingClear = new System.Windows.Forms.Button();
+            this.billingTotal = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.billingTotalButton = new System.Windows.Forms.Button();
             this.billingQuantity = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,19 +68,10 @@
             this.addToBillingButton = new System.Windows.Forms.Button();
             this.billingCategory = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.billingTotal = new System.Windows.Forms.TextBox();
-            this.billingClear = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.billingName = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.deleteButton = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.recordsTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(RecordsGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -94,7 +94,7 @@
             this.recordsTab.Controls.Add(this.deleteButton);
             this.recordsTab.Controls.Add(this.comboBox1);
             this.recordsTab.Controls.Add(this.label14);
-            this.recordsTab.Controls.Add(this.dataGridView1);
+            this.recordsTab.Controls.Add(RecordsGridView);
             this.recordsTab.Location = new System.Drawing.Point(8, 51);
             this.recordsTab.Margin = new System.Windows.Forms.Padding(4);
             this.recordsTab.Name = "recordsTab";
@@ -103,19 +103,52 @@
             this.recordsTab.TabIndex = 0;
             this.recordsTab.Text = "Records";
             // 
-            // dataGridView1
+            // deleteButton
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.deleteButton.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.deleteButton.Location = new System.Drawing.Point(564, 776);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(278, 53);
+            this.deleteButton.TabIndex = 24;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(155, 781);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(340, 45);
+            this.comboBox1.TabIndex = 24;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(4, 784);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(121, 37);
+            this.label14.TabIndex = 25;
+            this.label14.Text = "Sort By";
+            // 
+            // RecordsGridView
+            // 
+            RecordsGridView.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            RecordsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            RecordsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemNameColumn,
             this.CategoryColumn,
             this.ItemPriceColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(4, 5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(838, 746);
-            this.dataGridView1.TabIndex = 0;
+            RecordsGridView.Location = new System.Drawing.Point(4, 5);
+            RecordsGridView.Name = "RecordsGridView";
+            RecordsGridView.RowTemplate.Height = 33;
+            RecordsGridView.Size = new System.Drawing.Size(838, 746);
+            RecordsGridView.TabIndex = 0;
             // 
             // ItemNameColumn
             // 
@@ -190,6 +223,7 @@
             this.addButton.TabIndex = 8;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // label3
             // 
@@ -204,7 +238,13 @@
             // 
             // category
             // 
+            this.category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.category.FormattingEnabled = true;
+            this.category.Items.AddRange(new object[] {
+            "Drinks",
+            "Breakfast",
+            "Meal",
+            "Snacks"});
             this.category.Location = new System.Drawing.Point(286, 136);
             this.category.Name = "category";
             this.category.Size = new System.Drawing.Size(247, 33);
@@ -265,6 +305,7 @@
             this.browseButton.TabIndex = 12;
             this.browseButton.Text = "Browse";
             this.browseButton.UseVisualStyleBackColor = false;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // importButton
             // 
@@ -326,8 +367,68 @@
             this.panel2.Controls.Add(this.label9);
             this.panel2.Location = new System.Drawing.Point(-4, 563);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(582, 442);
+            this.panel2.Size = new System.Drawing.Size(582, 450);
             this.panel2.TabIndex = 12;
+            // 
+            // billingName
+            // 
+            this.billingName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.billingName.FormattingEnabled = true;
+            this.billingName.Location = new System.Drawing.Point(290, 131);
+            this.billingName.Name = "billingName";
+            this.billingName.Size = new System.Drawing.Size(247, 33);
+            this.billingName.TabIndex = 13;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.Gray;
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label13.Location = new System.Drawing.Point(3, 432);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(585, 10);
+            this.label13.TabIndex = 23;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Gray;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label12.Location = new System.Drawing.Point(3, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(585, 10);
+            this.label12.TabIndex = 13;
+            // 
+            // billingClear
+            // 
+            this.billingClear.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.billingClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billingClear.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.billingClear.Location = new System.Drawing.Point(46, 347);
+            this.billingClear.Name = "billingClear";
+            this.billingClear.Size = new System.Drawing.Size(165, 51);
+            this.billingClear.TabIndex = 15;
+            this.billingClear.Text = "Clear";
+            this.billingClear.UseVisualStyleBackColor = false;
+            // 
+            // billingTotal
+            // 
+            this.billingTotal.Location = new System.Drawing.Point(290, 313);
+            this.billingTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.billingTotal.Name = "billingTotal";
+            this.billingTotal.Size = new System.Drawing.Size(247, 31);
+            this.billingTotal.TabIndex = 22;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(40, 307);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(124, 37);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Total : ";
             // 
             // billingTotalButton
             // 
@@ -396,6 +497,7 @@
             // 
             // billingCategory
             // 
+            this.billingCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.billingCategory.FormattingEnabled = true;
             this.billingCategory.Location = new System.Drawing.Point(290, 81);
             this.billingCategory.Name = "billingCategory";
@@ -413,37 +515,6 @@
             this.label9.TabIndex = 13;
             this.label9.Text = "Item Name";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(40, 307);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(124, 37);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Total : ";
-            // 
-            // billingTotal
-            // 
-            this.billingTotal.Location = new System.Drawing.Point(290, 313);
-            this.billingTotal.Margin = new System.Windows.Forms.Padding(4);
-            this.billingTotal.Name = "billingTotal";
-            this.billingTotal.Size = new System.Drawing.Size(247, 31);
-            this.billingTotal.TabIndex = 22;
-            // 
-            // billingClear
-            // 
-            this.billingClear.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.billingClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.billingClear.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.billingClear.Location = new System.Drawing.Point(46, 347);
-            this.billingClear.Name = "billingClear";
-            this.billingClear.Size = new System.Drawing.Size(165, 51);
-            this.billingClear.TabIndex = 15;
-            this.billingClear.Text = "Clear";
-            this.billingClear.UseVisualStyleBackColor = false;
-            // 
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.Gray;
@@ -454,72 +525,13 @@
             this.label11.Size = new System.Drawing.Size(579, 10);
             this.label11.TabIndex = 1;
             // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.Gray;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(3, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(585, 10);
-            this.label12.TabIndex = 13;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.Gray;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label13.Location = new System.Drawing.Point(3, 432);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(585, 10);
-            this.label13.TabIndex = 23;
-            // 
-            // billingName
-            // 
-            this.billingName.FormattingEnabled = true;
-            this.billingName.Location = new System.Drawing.Point(290, 131);
-            this.billingName.Name = "billingName";
-            this.billingName.Size = new System.Drawing.Size(247, 33);
-            this.billingName.TabIndex = 13;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(155, 781);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(340, 45);
-            this.comboBox1.TabIndex = 24;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(4, 784);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(121, 37);
-            this.label14.TabIndex = 25;
-            this.label14.Text = "Sort By";
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.deleteButton.Location = new System.Drawing.Point(564, 776);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(278, 53);
-            this.deleteButton.TabIndex = 24;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = false;
-            // 
             // POSForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(1428, 1006);
+            this.ClientSize = new System.Drawing.Size(1428, 1004);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -539,7 +551,7 @@
             this.tabControl.ResumeLayout(false);
             this.recordsTab.ResumeLayout(false);
             this.recordsTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(RecordsGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -569,7 +581,6 @@
         private System.Windows.Forms.TextBox fileLocation;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemPriceColumn;
@@ -592,6 +603,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox billingName;
+        public static System.Windows.Forms.DataGridView RecordsGridView;
     }
 }
 
