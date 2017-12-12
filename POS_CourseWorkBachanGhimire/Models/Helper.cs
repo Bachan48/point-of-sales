@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace POS_CourseWorkBachanGhimire.Models
 {
@@ -109,13 +111,18 @@ namespace POS_CourseWorkBachanGhimire.Models
                 string name = Convert.ToString(row.Cells[NameColumnIndex].Value);
                 names.Add(name);
             }
-
+           
             for (int i = 0; i < names.Count - 1; i++)
             {
                 for (int j = 1; j < names.Count - 1; j++)
                 {
-                    if (true)
+                    if (names[j-1].CompareTo(names[j]) > 0)
                     {
+                        //soring names List only
+                        string temp = names[j - 1];
+                        names[j - 1] = names[j];
+                        names[j] = temp;
+
                         List<Object> row0Items = new List<Object>();
                         List<Object> row1Items = new List<Object>();
                         //sorting the entire rows
@@ -157,6 +164,15 @@ namespace POS_CourseWorkBachanGhimire.Models
             itemBox.DataSource = itemsList;
         }
 
+
+        /// <summary>
+        /// This method gets price of the given Item Name
+        /// </summary>
+        /// <param name="dataGridView"></param>
+        /// <param name="itemName"></param>
+        /// <param name="nameColumnIndex"></param>
+        /// <param name="priceColumnIndex"></param>
+        /// <returns></returns>
         public double GetPrice(DataGridView dataGridView, string itemName, int nameColumnIndex, int priceColumnIndex)
         {
             
@@ -171,5 +187,50 @@ namespace POS_CourseWorkBachanGhimire.Models
             return -1;
 
         }
-    }
+
+
+        /// <summary>
+        /// Method that adds data to the report chart
+        /// </summary>
+        /// <param name="salesChart"></param>
+        /// <param name="series"></param>
+        /// <param name="points"></param>
+        /// <param name="totalSalesCategory"></param>
+        /// <param name="category"></param>
+        /// <param name="color"></param>
+        public void AddDataToChart(Chart salesChart, string series, int points, double totalSalesCategory, String category, Color color) 
+        {
+            salesChart.Series[series].Points.Add(totalSalesCategory);
+            salesChart.Series[series].Points[points].Color = color;
+            salesChart.Series[series].Points[points].LegendText = category;
+            salesChart.Series[series].Points[points].Label = Convert.ToString(totalSalesCategory);
+        }
+
+
+        /// <summary>
+        /// This method clears the points in supplied chart's series
+        /// </summary>
+        /// <param name="chart"></param>
+        /// <param name="series"></param>
+        public void ClearChart(Chart chart, string series)
+        {
+            chart.Series[series].Points.Clear();
+        }
+
+
+        /// <summary>
+        /// This method returns total sales amount for a supplied category
+        /// </summary>
+        /// <param name="categoryPriceList"></param>
+        /// <returns></returns>
+        public double GetTotalSales(List<double> categoryPriceList)
+        {
+            double sales=0;
+            foreach(double itemPrice in categoryPriceList)
+            {
+                sales = sales + itemPrice;
+            }
+            return sales;
+        }
+    }    
 }

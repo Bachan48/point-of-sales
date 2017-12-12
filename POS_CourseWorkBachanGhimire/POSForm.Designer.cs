@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.recordsTab = new System.Windows.Forms.TabPage();
             this.sort = new System.Windows.Forms.Button();
@@ -46,7 +47,7 @@
             this.SalesNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalesCategoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalesPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SalesReport = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.SalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.itemLabel = new System.Windows.Forms.Label();
             this.itemName = new System.Windows.Forms.TextBox();
@@ -79,7 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RecordsGridView)).BeginInit();
             this.reportsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SalesGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SalesReport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SalesChart)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -200,7 +201,7 @@
             // 
             this.reportsTab.BackColor = System.Drawing.Color.LightSteelBlue;
             this.reportsTab.Controls.Add(this.SalesGridView);
-            this.reportsTab.Controls.Add(this.SalesReport);
+            this.reportsTab.Controls.Add(this.SalesChart);
             this.reportsTab.Location = new System.Drawing.Point(8, 51);
             this.reportsTab.Margin = new System.Windows.Forms.Padding(4);
             this.reportsTab.Name = "reportsTab";
@@ -244,21 +245,24 @@
             this.SalesPriceColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.SalesPriceColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // SalesReport
+            // SalesChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.SalesReport.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.SalesReport.Legends.Add(legend2);
-            this.SalesReport.Location = new System.Drawing.Point(0, 432);
-            this.SalesReport.Name = "SalesReport";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.SalesReport.Series.Add(series2);
-            this.SalesReport.Size = new System.Drawing.Size(845, 521);
-            this.SalesReport.TabIndex = 0;
-            this.SalesReport.Text = "Sales Report";
+            chartArea1.Name = "ChartArea1";
+            this.SalesChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.SalesChart.Legends.Add(legend1);
+            this.SalesChart.Location = new System.Drawing.Point(2, 435);
+            this.SalesChart.Name = "SalesChart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "SalesSeries";
+            this.SalesChart.Series.Add(series1);
+            this.SalesChart.Size = new System.Drawing.Size(845, 488);
+            this.SalesChart.TabIndex = 0;
+            this.SalesChart.Text = "Sales Report";
+            title1.Name = "Title1";
+            this.SalesChart.Titles.Add(title1);
             // 
             // label1
             // 
@@ -593,7 +597,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RecordsGridView)).EndInit();
             this.reportsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SalesGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SalesReport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SalesChart)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -639,7 +643,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox billingName;
         private System.Windows.Forms.DataGridView RecordsGridView;
-        private System.Windows.Forms.DataVisualization.Charting.Chart SalesReport;
+        private System.Windows.Forms.DataVisualization.Charting.Chart SalesChart;
         private System.Windows.Forms.Button sort;
         private System.Windows.Forms.DataGridView SalesGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemNameColumn;

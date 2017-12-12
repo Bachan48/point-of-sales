@@ -27,11 +27,12 @@ namespace POS_CourseWorkBachanGhimire
             RecordsGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             RecordsGridView.ReadOnly = true;
             SalesGridView.ReadOnly = true;
+            
 
             billingCategory.SelectedValueChanged +=
                 new EventHandler(CategoryBox_SelectedValueChanged);
         }
-      
+     
 
         //add buttom clicked
         private void AddButton_Click(object sender, EventArgs e)
@@ -51,6 +52,7 @@ namespace POS_CourseWorkBachanGhimire
                     itemRecords.AddToRecords(RowIndex, RecordsGridView);
 
                     helper.ClearFields(itemName, price);
+                    MessageBox.Show("Record has successfully been added.", "Records Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -123,9 +125,10 @@ namespace POS_CourseWorkBachanGhimire
                         itemRecords.AddToRecords(rowIndex, RecordsGridView);
                         helper.ClearFields(fileLocation);
                     }
+                    MessageBox.Show("Records have successfully been imported.", "Records Imported", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else MessageBox.Show("File location not specified.", "No Filepath selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-         
+            
 
             }
             catch (Exception ex)
@@ -138,14 +141,21 @@ namespace POS_CourseWorkBachanGhimire
         //sort button clicked
         private void Sort_Click(object sender, EventArgs e)
         {
-            string selectedItem = (string)sortBy.SelectedItem;
-            if (selectedItem.Equals("Name"))
+            try
             {
-                helper.SortByName(RecordsGridView, ItemNameColumn.Index);
+                string selectedItem = (string)sortBy.SelectedItem;
+                if (selectedItem.Equals("Name"))
+                {
+                    helper.SortByName(RecordsGridView, ItemNameColumn.Index);
+                }
+                else if (selectedItem.Equals("Price"))
+                {
+                    helper.SortByPrice(RecordsGridView, ItemPriceColumn.Index);
+                }
             }
-            else if (selectedItem.Equals("Price"))
+            catch (NullReferenceException)
             {
-                helper.SortByPrice(RecordsGridView, ItemPriceColumn.Index);
+                MessageBox.Show("No sort method selected", "Couldn't sort", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -171,6 +181,8 @@ namespace POS_CourseWorkBachanGhimire
                     }
                     MessageBox.Show("Given items has been sold", "Item Sold", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     helper.ClearFields(billingQuantity);
+
+                    GenerateChart();
                 }
                 else
                 {
@@ -186,10 +198,61 @@ namespace POS_CourseWorkBachanGhimire
 
         // value of selected item in category within billing changed
         private void CategoryBox_SelectedValueChanged(object sender, EventArgs e)
-        {
+        {            
             string selectedCategory = (string)billingCategory.SelectedItem;
             helper.CategorizeMenuItem(RecordsGridView, billingName, CategoryColumn.Index, ItemNameColumn.Index, selectedCategory);
         }
 
+
+        //Generate chart for sales report
+        public void GenerateChart()
+        {
+            helper.ClearChart(SalesChart, "SalesSeries");
+
+            double totalSalesBreakfastCategory;
+            double totalSalesDrinksCategory;
+            double totalSalesSnacksCategory;
+            double totalSalesMealCategory;
+
+            List<double> breakfastSoldPriceList = new List<double>();
+            List<double> drinksSoldPriceList = new List<double>();
+            List<double> snacksSoldPriceList = new List<double>();
+            List<double> mealSoldPriceList = new List<double>();
+
+            foreach (DataGridViewRow row in SalesGridView.Rows)
+            {
+                string category = Convert.ToString(row.Cells[SalesCategoryColumn.Index].Value);
+                if (category.Equals("Breakfast"))
+                {
+                    double price= Convert.ToDouble(row.Cells[SalesPriceColumn.Index].Value);
+                    breakfastSoldPriceList.Add(price);
+                }
+                else if (category.Equals("Drinks"))
+                {
+                    double price = Convert.ToDouble(row.Cells[SalesPriceColumn.Index].Value);
+                    drinksSoldPriceList.Add(price);
+                }
+                else if (category.Equals("Snacks"))
+                {
+                    double price = Convert.ToDouble(row.Cells[SalesPriceColumn.Index].Value);
+                    snacksSoldPriceList.Add(price);
+                }
+                else if (category.Equals("Meal"))
+                {
+                    double price = Convert.ToDouble(row.Cells[SalesPriceColumn.Index].Value);
+                    mealSoldPriceList.Add(price);
+                }
+            }
+
+            totalSalesBreakfastCategory = helper.GetTotalSales(breakfastSoldPriceList);
+            totalSalesDrinksCategory = helper.GetTotalSales(drinksSoldPriceList);
+            totalSalesSnacksCategory = helper.GetTotalSales(snacksSoldPriceList);
+            totalSalesMealCategory = helper.GetTotalSales(mealSoldPriceList);
+
+            helper.AddDataToChart(SalesChart, "SalesSeries", 0, totalSalesBreakfastCategory, "Breakfast", Color.Red);
+            helper.AddDataToChart(SalesChart, "SalesSeries", 1, totalSalesDrinksCategory, "Drinks", Color.Green);
+            helper.AddDataToChart(SalesChart, "SalesSeries", 2, totalSalesSnacksCategory, "Snacks", Color.LightSkyBlue);
+            helper.AddDataToChart(SalesChart, "SalesSeries", 3, totalSalesMealCategory, "Meal", Color.Yellow);            
+        }
     }
 }
