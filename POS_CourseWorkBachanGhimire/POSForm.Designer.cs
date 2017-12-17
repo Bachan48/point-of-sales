@@ -590,7 +590,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "POSForm";
-            this.Text = "Point of Sales";
+            this.Text = "Point of Sales - Bachan Ghimire";
             this.tabControl.ResumeLayout(false);
             this.recordsTab.ResumeLayout(false);
             this.recordsTab.PerformLayout();

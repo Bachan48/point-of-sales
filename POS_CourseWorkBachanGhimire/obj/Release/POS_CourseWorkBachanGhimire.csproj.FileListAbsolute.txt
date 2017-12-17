@@ -1,0 +1,10 @@
+D:\College\AD\CourseWork\POS_BachanGhimire\POS_CourseWorkBachanGhimire\bin\Release\POS_CourseWorkBachanGhimire.exe.config
+D:\College\AD\CourseWork\POS_BachanGhimire\POS_CourseWorkBachanGhimire\bin\Release\POS_CourseWorkBachanGhimire.exe
+D:\College\AD\CourseWork\POS_BachanGhimire\POS_CourseWorkBachanGhimire\bin\Release\POS_CourseWorkBachanGhimire.pdb
+D:\College\AD\CourseWork\POS_BachanGhimire\POS_CourseWorkBachanGhimire\obj\Release\POS_CourseWorkBachanGhimire.csprojResolveAssemblyReference.cache
+D:\College\AD\CourseWork\POS_BachanGhimire\POS_CourseWorkBachanGhimire\obj\Release\POS_CourseWorkBachanGhimire.POSForm.resources
+D:\College\AD\CourseWork\POS_BachanGhimire\POS_CourseWorkBachanGhimire\obj\Release\POS_CourseWorkBachanGhimire.Properties.Resources.resources
+D:\College\AD\CourseWork\POS_BachanGhimire\POS_CourseWorkBachanGhimire\obj\Release\POS_CourseWorkBachanGhimire.csproj.GenerateResource.Cache
+D:\College\AD\CourseWork\POS_BachanGhimire\POS_CourseWorkBachanGhimire\obj\Release\POS_CourseWorkBachanGhimire.csproj.CoreCompileInputs.cache
+D:\College\AD\CourseWork\POS_BachanGhimire\POS_CourseWorkBachanGhimire\obj\Release\POS_CourseWorkBachanGhimire.exe
+D:\College\AD\CourseWork\POS_BachanGhimire\POS_CourseWorkBachanGhimire\obj\Release\POS_CourseWorkBachanGhimire.pdb
