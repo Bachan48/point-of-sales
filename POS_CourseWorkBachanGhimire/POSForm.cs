@@ -205,7 +205,7 @@ namespace POS_CourseWorkBachanGhimire
 
 
         //Generate chart for sales report
-        public void GenerateChart()
+        private void GenerateChart()
         {
             helper.ClearChart(SalesChart, "SalesSeries");
 
